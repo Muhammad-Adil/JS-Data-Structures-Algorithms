@@ -1,0 +1,12 @@
+<p>
+  todos works!
+</p>
+<form>
+  <input type="text" [(ngModel)]="text"
+</form>
+
+<ul>
+  <li *ngFor="let todo of todos">
+    {{ todo.text }}
+  </li>
+</ul>
