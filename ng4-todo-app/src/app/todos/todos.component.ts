@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class TodosComponent implements OnInit {
 
   todos;
+  text;
 
   constructor() { }
 
@@ -22,7 +23,13 @@ export class TodosComponent implements OnInit {
         text: 'todo 3'
       }
     ];
+  }
 
+  addTodo(){
+    console.log(this.text);
+    this.todos.push({
+      text: this.text
+    });
   }
 
 }

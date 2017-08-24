@@ -1,8 +1,9 @@
 <p>
   todos works!
 </p>
-<form>
-  <input type="text" [(ngModel)]="text"
+<form (submit)="addTodo()">
+  <input type="text" [(ngModel)]="text"/>
+  <button (click)="deleteTodo(todo.text)">x</button>
 </form>
 
 <ul>
