@@ -1,10 +1,15 @@
 import { Component, OnInit, NgModule } from '@angular/core';
+
+
+import { TodoService } from "../todo.service";
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.css']
+  styleUrls: ['./todos.component.css'],
+  providers : [ TodoService ]
 })
 export class TodosComponent implements OnInit {
 
