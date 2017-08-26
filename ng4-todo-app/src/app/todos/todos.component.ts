@@ -16,7 +16,7 @@ export class TodosComponent implements OnInit {
   todos;
   text;
 
-  constructor() { }
+  constructor( private _todoService: TodoService) { }
 
   ngOnInit() {
 
