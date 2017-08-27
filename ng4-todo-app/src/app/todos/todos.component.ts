@@ -42,6 +42,6 @@ export class TodosComponent implements OnInit {
   editTodo(todo){
     this.appState = 'edit' ;
     console.log(this.appState);
-    
+    this.text = todo.text; 
   }
 }
