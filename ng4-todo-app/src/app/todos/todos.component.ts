@@ -53,13 +53,14 @@ export class TodosComponent implements OnInit {
     //this.appState = 'edit' ;
     for(var i = 0; i < this.todos.length; i++ ) {
       if(this.todos[i].text == this.oldText){
-        this.todos[i].text = this.text;
-      }
-    
+          this.todos[i].text = this.text;
+      }  
     //console.log(this.todo.text);
-    
-    //this.oldText = todo.text;
-    //this.text = todo.text; 
   }
+  this._todoService.updateTodo(this.oldText , this.text);
+
+
+
+}
 
 }
