@@ -3,16 +3,12 @@
   <h3>Add Todo</h3>
   <form (submit)="addTodo()">
     <input type="text" [(ngModel)]="text" name="text" />
-
   </form>
-
 </div>
 
-
-
-
+<!-- Edit Todo -->
 <div *ngIf="appState == 'edit' ">
-  <h3>Update Todo</h3>
+  <h3>Edit Todo</h3>
     <form (submit)="updateTodo()">
       <input type="text" [(ngModel)]="text" name="text" />
   
