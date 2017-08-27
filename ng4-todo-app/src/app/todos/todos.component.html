@@ -1,10 +1,25 @@
-<p>todos works!</p>
 
-<form (submit)="addTodo()">
-  <input type="text" [(ngModel)]="text" name="text" />
+<div *ngIf="appState == 'default' ">
+  <h3>Add Todo</h3>
+  <form (submit)="addTodo()">
+    <input type="text" [(ngModel)]="text" name="text" />
 
-</form>
+  </form>
 
+</div>
+
+
+
+
+<div *ngIf="appState == 'edit' ">
+  <h3>Update Todo</h3>
+    <form (submit)="updateTodo()">
+      <input type="text" [(ngModel)]="text" name="text" />
+  
+    </form>
+  
+  </div>
+  
 <ul>
   <li *ngFor="let todo of todos">
     <span (click)="editTodo(todo)"> {{ todo.text }} </span><button (click)="deleteTodo(todo.text)">x</button>
