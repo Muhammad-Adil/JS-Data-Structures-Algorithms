@@ -12,7 +12,7 @@ export class TodosComponent implements OnInit {
 
   todos;
   text;
-
+  appState = 'default';
   constructor( private _todoService: TodoService) { }
 
   ngOnInit() {

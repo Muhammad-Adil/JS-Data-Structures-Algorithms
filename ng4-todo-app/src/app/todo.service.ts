@@ -27,9 +27,13 @@ export class TodoService extends InitTodos {
       let todos = JSON.parse(localStorage.getItem('todos')); 
       for(var i = 0; i < todos.length; i++ ) {
         if(todos[i].text == todoText){
+        //deleteTodo
           todos.splice(i , 1);
         }
       }
+        //Set New Todo
+        localStorage.setItem('todos', JSON.stringify(todos));
+        
     }
 
 }
