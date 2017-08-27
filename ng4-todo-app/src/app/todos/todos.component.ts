@@ -38,4 +38,10 @@ export class TodosComponent implements OnInit {
 
     this._todoService.deleteTodo(todoText);
   }
+
+  editTodo(todo){
+    this.appState = 'edit' ;
+    console.log(this.appState);
+    
+  }
 }
