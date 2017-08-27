@@ -1,7 +1,9 @@
+import { Component, NgModule } from '@angular/core';
+
 export class InitTodos {
-    load() {
-        if (localStorage.getItem('todos') === null || localStorage.getItem('todos') === undefined) {
-            console.log('no todos found ')
+    load(){
+        if(localStorage.getItem('todos') === null || localStorage.getItem('todos') === undefined) {
+            console.log('no any todo found... Creating ')
 
             var todos = [
                 {
@@ -14,7 +16,8 @@ export class InitTodos {
             ];
 
             localStorage.setItem('todos' , JSON.stringify(todos));
-            return todos;
+            return
+            //  todos;
         } else {
             console.log('found todos');
         }
