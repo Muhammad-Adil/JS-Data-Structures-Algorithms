@@ -11,5 +11,5 @@ import { TodoService } from "./todo.service";
   providers: [ TodoService ]
 })
 export class AppComponent {
-  title = 'app';
+  title = 'NG 4 Todo App';
 }
