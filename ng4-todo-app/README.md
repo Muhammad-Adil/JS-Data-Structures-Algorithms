@@ -8,6 +8,5 @@
 > Delete button for Delete a Todo.
 
 
-
-* [Angular] - 4 For Web App!
+Angular 4 For Web App!
 
