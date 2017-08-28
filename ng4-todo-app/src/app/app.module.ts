@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
+
+import { MdButtonModule, MdCheckboxModule, MdTableModule, MdIconModule } from '@angular/material';
 
 
 
@@ -19,7 +22,7 @@ import { TodosComponent } from './todos/todos.component';
     TodosComponent
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, FormsModule, MdButtonModule, MdCheckboxModule, MdTableModule, MdIconModule 
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]
