@@ -37,12 +37,13 @@ export class TodoService extends InitTodos {
 
 
 
-    updateTodo( oldText, todoText ){
+    updateTodo( oldText, newText ){
       let todos = JSON.parse(localStorage.getItem('todos')); 
+      
       for(var i = 0; i < todos.length; i++ ) {
-        if(todos[i].text == todoText){
-        //deleteTodo
-          todos.splice(i , 1);
+        if(todos[i].text == oldText){
+        //update Todo
+          todos[i].text = newText ;
         }
       }
         //Set New Todo
