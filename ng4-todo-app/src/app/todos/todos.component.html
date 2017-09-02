@@ -15,7 +15,7 @@
 
 <md-list>
   <md-list-item *ngFor="let todo of todos">
-    <span (click)="editTodo(todo)"> {{ todo.text }} </span><div fxFlex="1 1 auto"></div>
+    <span class="flex-1" (click)="editTodo(todo)"> {{ todo.text }} </span><div fxFlex="1 1 auto"></div>
     <button md-button (click)="deleteTodo(todo.text)"><md-icon>delete_forever</md-icon></button>
   </md-list-item>
 </md-list>

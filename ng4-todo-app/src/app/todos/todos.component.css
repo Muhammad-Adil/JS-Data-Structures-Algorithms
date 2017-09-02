@@ -11,3 +11,7 @@ button{
     width: 100px;
     align-self: right;
 }
+
+.flex-1{
+    flex: 1;
+}
