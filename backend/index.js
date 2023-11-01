@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 require("dotenv").config();
 const port = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json());
 
 // MongoDB connection
 const { MongoClient, ServerApiVersion } = require("mongodb");
@@ -32,6 +36,16 @@ async function run() {
     client.connect();
 
     //
+    //
+
+    // ! CLASSES ROUTES
+    app.post("/new-class", verifyJWT, verifyInstructor, async (req, res) => {
+      const newClass = req.body;
+      newClass.availableSeats = parseInt(newClass.availableSeats);
+      const result = await classesCollection.insertOne(newClass);
+      res.send(result);
+    });
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log(
