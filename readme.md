@@ -1,1 +1,1 @@
-## NDY
+## MERN Yoga Online App
