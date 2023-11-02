@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+
 const cors = require("cors");
 require("dotenv").config();
 const port = process.env.PORT || 5000;
@@ -8,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@yoga-app.gpprp5e.mongodb.net/?retryWrites=true&w=majority&appName=yoga-app`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -39,13 +40,32 @@ async function run() {
     //
 
     // ! CLASSES ROUTES
-    app.post("/new-class", verifyJWT, verifyInstructor, async (req, res) => {
+    // verifyJWT,
+    // verifyInstructor,
+    app.post("/new-class", async (req, res) => {
       const newClass = req.body;
       newClass.availableSeats = parseInt(newClass.availableSeats);
       const result = await classesCollection.insertOne(newClass);
       res.send(result);
     });
 
+    // GET ALL CLASSES
+    app.get("/classes", async (req, res) => {
+      console.log("classes", classes);
+      const query = { status: "approved" };
+      const result = await classesCollection.find(query).toArray();
+      res.send(result);
+    });
+
+    // GET ALL CLASSES ADDED BY INSTRUCTOR
+    app.get("/classes/:email", async (req, res) => {
+      const email = req.params.email;
+      const query = { instructorEmail: email };
+      const result = await classesCollection.find(query).toArray();
+      res.send(result);
+    });
+
+    //
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log(
