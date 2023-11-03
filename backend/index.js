@@ -5,9 +5,13 @@ const cors = require("cors");
 require("dotenv").config();
 const port = process.env.PORT || 5000;
 
+const stripe = require("stripe")(process.env.PAYMENT_SECRET);
+
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 // Routes
 // SET TOKEN .
@@ -29,7 +33,6 @@ const verifyJWT = (req, res, next) => {
 };
 
 // MongoDB connection
-const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 // const uri = `mongodb://adil-yoga-0503:${process.env.DB_PASSWORD}@yoga-app.gpprp5e.mongodb.net`;
 //  // /?retryWrites=true&w=majority&appName=yoga-app`;
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@yoga-app.gpprp5e.mongodb.net/?retryWrites=true&w=majority&appName=yoga-app`;
