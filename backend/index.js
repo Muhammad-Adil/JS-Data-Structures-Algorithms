@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 require("dotenv").config();
 const port = process.env.PORT || 5000;
-
+//  Stripe payment
 const stripe = require("stripe")(process.env.PAYMENT_SECRET);
 
 // Middleware
@@ -33,10 +33,7 @@ const verifyJWT = (req, res, next) => {
 };
 
 // MongoDB connection
-// const uri = `mongodb://adil-yoga-0503:${process.env.DB_PASSWORD}@yoga-app.gpprp5e.mongodb.net`;
-//  // /?retryWrites=true&w=majority&appName=yoga-app`;
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@yoga-app.gpprp5e.mongodb.net/?retryWrites=true&w=majority&appName=yoga-app`;
-// +srv
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -48,13 +45,10 @@ const client = new MongoClient(uri, {
 });
 
 //
-// console.log("client", client);
 //
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    // await client.connect();
-
     // Create DB and collections
     const database = client.db("yoga-app");
     const userCollection = database.collection("users");
@@ -66,9 +60,6 @@ async function run() {
     await client.connect();
 
     //
-    console.log("classes classesCollection", classesCollection);
-    //
-
     // Verify admin
     const verifyAdmin = async (req, res, next) => {
       const email = req.decoded.email;
@@ -314,6 +305,7 @@ async function run() {
         clientSecret: paymentIntent.client_secret,
       });
     });
+    //
     // POST PAYMENT INFO
     app.post("/payment-info", verifyJWT, async (req, res) => {
       const paymentInfo = req.body;
